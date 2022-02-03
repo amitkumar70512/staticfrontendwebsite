@@ -1,4 +1,15 @@
 
+<<<<<<< HEAD
+=======
+body{
+margin: 0;
+padding: 0;
+font-family: sans-serif;
+/*background: url(bgimage.jpg)no-repeat;*/
+background-size: cover;
+background-color: #DCDCDC;
+}
+>>>>>>> f85b991f98a9336615c2ae5d3f6b2b6bebabd036
 
 .login-box{
 width: 400px;
@@ -164,6 +175,7 @@ font-family: Consolas,"Courier New";
 border-left: 4px solid #ff7513;
 word-break:break-all;
 word-wrap: break-word;
+<<<<<<< HEAD
 }
 
 
@@ -284,3 +296,6 @@ text-decoration: none;
 }
 
 
+=======
+}
+>>>>>>> f85b991f98a9336615c2ae5d3f6b2b6bebabd036
