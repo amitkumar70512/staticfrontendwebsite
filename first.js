@@ -13,9 +13,12 @@ window.onscroll = function() {
 } 
 
 var btn1=document.getElementById("getBtn");
-btn1.addEventListener("click",()=>{
-  console.log("mouse over btn 1");
-})
+if(btn1){
+  btn1.addEventListener("click", function() {
+    this.style.backgroundColor = "red";
+  });
+}
+
 
 function loadDoc()
 {
@@ -23,12 +26,18 @@ function loadDoc()
   xhttp.onreadystatechange=function(){
     if(this.readyState==4 && this.status==200)
     {
+      console.log("state change to 4 and ok");
       document.getElementById("content").innerHTML=this.responseText;
 
     }
   };
-  xhttp.open("GET","amit.txt",true);
+  xhttp.open("GET","prgm1.html",true);
   xhttp.send();
 
 
+}
+
+function closeAjax()
+{
+  var d=document.getElementById("ajaxContent").innerHTML="";
 }
