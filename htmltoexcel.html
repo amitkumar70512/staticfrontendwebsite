@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html to excel download</title>
+    <style>
+      * {
+        color: #2b2b2b;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      table {
+        border: 1px solid blue;
+        width: 40%;
+      }
+      th {
+        text-align: left;
+        color: red;
+        padding: 2px;
+        text-decoration: underline;
+      }
+      tbody > tr:nth-of-type(odd) {
+        background-color: blanchedalmond;
+      }
+      tbody > tr:first-child {
+        background-color: rgb(192, 173, 173);
+      }
+      button {
+        cursor: pointer;
+        color: white;
+        background-color: violet;
+      }
+    </style>
+
+    <script>
+      function downloadCSV(csv, filename) {
+        var csvfile;
+        var downloadLink;
+
+        csvfile = new Blob([csv], { type: "text/csv" });
+        downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvfile);
+        downloadLink.style.display = "none";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        console.log("insie donwload csv fun");
+      }
+
+      function exportTableCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("table tr");
+
+        for (var i = 0; i < rows.length; i++) {
+          var row = [],
+            cols = rows[i].querySelectorAll("td,th");
+          for (var j = 0; j < cols.length; j++) {
+            row.push(cols[j].innerText);
+          }
+          csv.push(row.join(","));
+        }
+        // download csv file
+        downloadCSV(csv.join("\n"), filename);
+        console.log("insie export tablecsb");
+      }
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>amit</td>
+        <td>amitkumar.cs19@gmail.com</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>rahul</td>
+        <td>rahul.cs19@bmsce.ac.in</td>
+        <td>absent</td>
+      </tr>
+    </table>
+    <button onclick="exportTableCSV('faculty_attendance.csv')">click me</button>
+  </body>
+</html>
